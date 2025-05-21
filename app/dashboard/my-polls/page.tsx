@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { PollCard } from "@/components/PollCard";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import { PlusCircle, Loader2, Trash2, AlertCircle } from "lucide-react";
+import { PlusCircle, Loader2, Trash2 } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,7 +20,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function MyPollsPage() {
   const { user, loading: authLoading } = useAuth();
