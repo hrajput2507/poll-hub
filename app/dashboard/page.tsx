@@ -149,7 +149,7 @@ export default function Dashboard() {
             <div className="bg-muted/30 border rounded-lg p-6 flex flex-col items-center justify-center text-center">
               <h3 className="text-lg font-medium mb-2">View your polls</h3>
               <p className="text-muted-foreground mb-4">
-                Check results and manage the polls you've created.
+                Check results and manage the polls you&apos;ve created.
               </p>
               <Button variant="outline" asChild>
                 <Link href="/dashboard/my-polls">My Polls</Link>

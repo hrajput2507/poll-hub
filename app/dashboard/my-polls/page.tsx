@@ -133,7 +133,7 @@ export default function MyPollsPage() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">My Polls</h1>
             <p className="text-muted-foreground mt-1">
-              Manage the polls you've created
+              Manage the polls you&apos;ve created
             </p>
           </div>
           <Button asChild className="w-full md:w-auto">
@@ -147,7 +147,7 @@ export default function MyPollsPage() {
         {polls.length === 0 ? (
           <div className="border rounded-lg p-8 text-center bg-muted/30">
             <h3 className="text-lg font-medium mb-2">
-              You haven't created any polls yet
+              You haven&apos;t created any polls yet
             </h3>
             <p className="text-muted-foreground mb-4">
               Create your first poll to start collecting votes!
@@ -199,7 +199,7 @@ export default function MyPollsPage() {
               <AlertDialogTitle>Are you sure?</AlertDialogTitle>
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete the
-                poll "{pollToDelete?.title}" and all associated votes.
+                poll &quot;{pollToDelete?.title}&quot; and all associated votes.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

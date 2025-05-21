@@ -1,45 +1,52 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ScrollIcon as PollIcon, Loader2, CheckCircle2, XCircle } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import {
+  ScrollIcon as PollIcon,
+  Loader2,
+  CheckCircle2,
+  XCircle,
+} from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function VerifyEmailPage() {
-  const [verificationStatus, setVerificationStatus] = useState<'loading' | 'success' | 'error'>('loading');
+  const [verificationStatus, setVerificationStatus] = useState<
+    "loading" | "success" | "error"
+  >("loading");
   const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const token = searchParams.get('token');
-        const type = searchParams.get('type');
+        const token = searchParams.get("token");
+        const type = searchParams.get("type");
 
-        if (token && type === 'signup') {
+        if (token && type === "signup") {
           const { error } = await supabase.auth.verifyOtp({
             token_hash: token,
-            type: 'signup',
+            type: "signup",
           });
 
           if (error) {
             throw error;
           }
 
-          setVerificationStatus('success');
+          setVerificationStatus("success");
           // Redirect to signin after 3 seconds
           setTimeout(() => {
-            router.push('/auth/signin');
+            router.push("/auth/signin");
           }, 3000);
         } else {
-          setVerificationStatus('error');
+          setVerificationStatus("error");
         }
       } catch (error) {
-        console.error('Error verifying email:', error);
-        setVerificationStatus('error');
+        console.error("Error verifying email:", error);
+        setVerificationStatus("error");
       }
     };
 
@@ -56,8 +63,8 @@ export default function VerifyEmailPage() {
               <span className="text-2xl font-bold">PollHub</span>
             </div>
           </Link>
-          
-          {verificationStatus === 'loading' && (
+
+          {verificationStatus === "loading" && (
             <>
               <div className="flex items-center justify-center">
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -69,13 +76,14 @@ export default function VerifyEmailPage() {
             </>
           )}
 
-          {verificationStatus === 'success' && (
+          {verificationStatus === "success" && (
             <>
               <Alert className="border-green-200 bg-green-100 dark:bg-green-900/20">
                 <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
                 <AlertTitle>Email verified successfully!</AlertTitle>
                 <AlertDescription>
-                  Your email has been verified. You will be redirected to sign in shortly.
+                  Your email has been verified. You will be redirected to sign
+                  in shortly.
                 </AlertDescription>
               </Alert>
               <Button asChild className="mt-4">
@@ -84,13 +92,14 @@ export default function VerifyEmailPage() {
             </>
           )}
 
-          {verificationStatus === 'error' && (
+          {verificationStatus === "error" && (
             <>
               <Alert variant="destructive">
                 <XCircle className="h-5 w-5" />
                 <AlertTitle>Verification failed</AlertTitle>
                 <AlertDescription>
-                  We couldn't verify your email address. The link may have expired or is invalid.
+                  We couldn&apos;t verify your email address. The link may have
+                  expired or is invalid.
                 </AlertDescription>
               </Alert>
               <div className="flex gap-4 mt-4">
