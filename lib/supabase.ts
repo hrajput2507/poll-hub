@@ -29,6 +29,28 @@ if (!supabaseUrl || !supabaseAnonKey) {
 //     });
 //   },
 // });
+// export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+//   auth: {
+//     autoRefreshToken: true,
+//     persistSession: true,
+//     detectSessionInUrl: true,
+//   },
+//   global: {
+//     headers: {
+//       "Content-Type": "application/json",
+
+//     },
+//     fetch: (url: RequestInfo | URL, init?: RequestInit) => {
+//       return fetch(url, {
+//         ...init,
+//         credentials: "include",
+//       });
+//     },
+//   },
+//   db: {
+//     schema: "public",
+//   },
+// });
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
@@ -38,12 +60,29 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   global: {
     headers: {
       "Content-Type": "application/json",
+      apikey: supabaseAnonKey, // Ensure API key is included
     },
-    fetch: (url: RequestInfo | URL, init?: RequestInit) => {
-      return fetch(url, {
-        ...init,
-        credentials: "include",
-      });
+    fetch: async (url: RequestInfo | URL, init?: RequestInit) => {
+      try {
+        const response = await fetch(url, {
+          ...init,
+          credentials: "include", // Only if explicitly needed
+          headers: {
+            ...init?.headers,
+            apikey: supabaseAnonKey,
+          },
+        });
+
+        // Handle CORS/preflight issues
+        if (!response.ok && response.status === 0) {
+          throw new Error(`CORS error when accessing ${url}`);
+        }
+
+        return response;
+      } catch (error) {
+        console.error("Fetch error:", error);
+        throw error;
+      }
     },
   },
   db: {
