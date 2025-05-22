@@ -6,10 +6,8 @@ const nextConfig = {
     domains: ["images.pexels.com"],
     unoptimized: true,
   },
-  // Enable server-side features
-  experimental: {
-    serverActions: true,
-  },
+  // Remove output: 'export' as it's not needed for Vercel deployment
+  // and can cause issues with API routes
 };
 
 module.exports = nextConfig;

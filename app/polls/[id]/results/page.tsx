@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import PollResultsPageClient from "./PollResultsPageClient";
 
-// Enable dynamic rendering
+// Enable dynamic rendering and disable static generation
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
