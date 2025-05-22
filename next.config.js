@@ -4,13 +4,11 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["images.pexels.com"],
-    unoptimized: true, // Only needed for `next export`
+    unoptimized: true,
   },
-  // Required for API routes & Supabase Realtime
   experimental: {
     serverComponentsExternalPackages: ["@supabase/supabase-js"],
   },
-  // middleware: true,
 };
 
 module.exports = nextConfig;
