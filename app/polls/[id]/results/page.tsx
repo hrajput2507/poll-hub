@@ -1,9 +1,16 @@
 import { Metadata } from "next";
 import PollResultsPageClient from "./PollResultsPageClient";
+import { getAllPollIds } from "@/lib/polls";
 
-// Enable dynamic rendering and disable static generation
+// Force dynamic rendering for all poll result pages
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
+export async function generateStaticParams() {
+  const pollIds = await getAllPollIds();
+  return pollIds.map((id) => ({
+    id,
+  }));
+}
 
 export const metadata: Metadata = {
   title: "Poll Results - PollHub",
