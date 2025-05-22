@@ -1,7 +1,5 @@
 # Social Polling App
 
-A full-featured application that allows users to create polls, vote, and view real-time results in an interactive dashboard.
-
 ## Features
 
 - **User Authentication**: Sign up and log in with email and password via Supabase Auth
@@ -14,7 +12,7 @@ A full-featured application that allows users to create polls, vote, and view re
 ## Tech Stack
 
 - **Frontend**: Next.js, React, TypeScript
-- **UI**: Tailwind CSS, shadcn/ui components
+- **UI**: Tailwind CSS,redix ui components
 - **Backend**: Next.js API Routes (Node.js/TypeScript)
 - **Database**: Supabase (PostgreSQL)
 - **Authentication**: Supabase Auth
@@ -109,7 +107,7 @@ npm run build
 
 ## Deployment
 
-The application is deployed on Vercel and can be accessed at [your-deployment-url].
+The application is deployed on Vercel and can be accessed at https://poll-hub-wheat.vercel.app/.
 
 ## Future Improvements
 
