@@ -4,8 +4,12 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["images.pexels.com"],
+    unoptimized: true,
   },
-  output: process.env.VERCEL ? "standalone" : undefined,
+  // Enable server-side features
+  experimental: {
+    serverActions: true,
+  },
 };
 
 module.exports = nextConfig;
