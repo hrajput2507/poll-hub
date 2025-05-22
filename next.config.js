@@ -4,10 +4,15 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["images.pexels.com"],
-    unoptimized: true,
+    unoptimized: true, // Only needed for `next export`
   },
-  // Remove output: 'export' as it's not needed for Vercel deployment
-  // and can cause issues with API routes
+  // Required for API routes & Supabase Realtime
+  experimental: {
+    serverComponentsExternalPackages: ["@supabase/supabase-js"],
+    runtime: "experimental-edge",
+  },
+  // Enable if using middleware (e.g., auth)
+  // middleware: true,
 };
 
 module.exports = nextConfig;
