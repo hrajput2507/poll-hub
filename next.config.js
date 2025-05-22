@@ -9,9 +9,7 @@ const nextConfig = {
   // Required for API routes & Supabase Realtime
   experimental: {
     serverComponentsExternalPackages: ["@supabase/supabase-js"],
-    runtime: "experimental-edge",
   },
-  // Enable if using middleware (e.g., auth)
   // middleware: true,
 };
 
