@@ -60,6 +60,9 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   global: {
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers":
+        "authorization, x-client-info, apikey, content-type",
       apikey: supabaseAnonKey, // Ensure API key is included
     },
     fetch: async (url: RequestInfo | URL, init?: RequestInit) => {
