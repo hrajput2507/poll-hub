@@ -1,20 +1,13 @@
-import { Metadata } from 'next';
-import PollResultsPageClient from './PollResultsPageClient';
-import { getAllPollIds } from '@/lib/polls';
+import { Metadata } from "next";
+import PollResultsPageClient from "./PollResultsPageClient";
 
-// Force dynamic rendering for all poll result pages
-export const dynamic = 'force-dynamic';
-
-export async function generateStaticParams() {
-  const pollIds = await getAllPollIds();
-  return pollIds.map((id) => ({
-    id,
-  }));
-}
+// Enable dynamic rendering
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Poll Results - PollHub',
-  description: 'View real-time poll results and statistics',
+  title: "Poll Results - PollHub",
+  description: "View real-time poll results and statistics",
 };
 
 export default function PollResultsPage() {

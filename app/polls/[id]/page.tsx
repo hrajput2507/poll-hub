@@ -1,20 +1,13 @@
-import { Metadata } from 'next';
-import PollPageClient from './PollPageClient';
-import { getAllPollIds } from '@/lib/polls';
+import { Metadata } from "next";
+import PollPageClient from "./PollPageClient";
 
-// Force dynamic rendering for all poll pages
-export const dynamic = 'force-dynamic';
-
-export async function generateStaticParams() {
-  const pollIds = await getAllPollIds();
-  return pollIds.map((id) => ({
-    id,
-  }));
-}
+// Enable dynamic rendering
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Vote on Poll - PollHub',
-  description: 'Cast your vote and make your voice heard',
+  title: "Vote on Poll - PollHub",
+  description: "Cast your vote and make your voice heard",
 };
 
 export default function PollPage() {
